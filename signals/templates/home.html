@@ -1,0 +1,26 @@
+<!-- task_list.html -->
+<h2>Add User</h2>
+<form method="POST" action="{% url 'signal_user_add' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Add using Signals</button>
+</form>
+
+<h2>Task List</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <a href="{% url 'signal_edit' user.id %}">Edit</a> |
+      <a href="{% url 'signal_user_delete' user.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
