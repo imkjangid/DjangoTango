@@ -1,7 +1,7 @@
-<!-- task_list.html -->
+<!-- edit.html -->
 <h2>Edit User</h2>
-<form method="POST" action="{% url 'basics:user_update' user.id %}">
+<form method="POST" action="{% url 'user_update' user.id %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Add</button>
+  <button type="submit">Update</button>
 </form>

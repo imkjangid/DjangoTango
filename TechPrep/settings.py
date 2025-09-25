@@ -87,10 +87,14 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "signals_db.sqlite3",
     },
+    "authentication": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "authentication.sqlite3",
+    },
 }
 
 # Use database routers to direct database operations for the 'basics' app
-DATABASE_ROUTERS = ["TechPrep.db_routers.BasicsRouter", "TechPrep.db_routers.SignalsRouter"]
+DATABASE_ROUTERS = ["TechPrep.db_routers.BasicsRouter", "TechPrep.db_routers.SignalsRouter", "TechPrep.db_routers.AuthenticationRouter"]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -109,6 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
 
 
 # Internationalization
@@ -132,6 +137,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# settings.py
+LOGIN_URL = '/authentication/home/'  # Redirects unauthenticated users here
+LOGIN_REDIRECT_URL = '/profile/'  # Where to go after successful login
 
 LOGGING = {
     'version': 1,
